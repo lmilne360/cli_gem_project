@@ -1,5 +1,11 @@
 class Art
-	attr_accessor :title, :artist, :link
+attr_accessor :title, :artist, :link
 	@@all = []
+
+	def initialize(arr)
+		@title = arr[:title]
+		@artist = arr[:artist]
+		@link = arr[:link]
+	end
 
 end

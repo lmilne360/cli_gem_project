@@ -10,11 +10,11 @@ class Scraper
 		all.each do |item|
 			
 			title = item.css(".title").text
-			artist = item.css(".artist").text
+			artist_name = item.css(".artist").text
 			link = item["href"]
 			artist_page = item.css(".artist a").attribute("href").value
 
-			art_pieces << {title: title, link:link, artist_name: artist, artist_page: artist_page}
+			art_pieces << {title: title, link:link, artist_name: artist_name, artist_page: artist_page}
 		end
 
 		art_pieces
