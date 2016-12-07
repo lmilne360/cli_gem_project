@@ -5,10 +5,14 @@ class Artist
 
  @@all = []
 
- def initialize(arr)
- 	@name = arr[:artist_name]
- 	@page = arr[:artist_page]
+ def initialize(art_data)
+ 	@name = art_data[:artist_name]
+ 	@page = art_data[:artist_page]
  	self.save
+ end
+
+ def self.all
+	@@all
  end
 
  def find(name)

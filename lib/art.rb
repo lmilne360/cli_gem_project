@@ -5,10 +5,14 @@ class Art
 
 	@@all = []
 
-	def initialize(arr)
-		@title = arr[:title]
-		@link = arr[:link]
+	def initialize(art_data)
+		@title = art_data[:title]
+		@link = art_data[:link]
 		self.save
+	end
+
+	def self.all
+		@@all
 	end
 
 	def find_by_title(title)
@@ -18,5 +22,6 @@ class Art
 	def find_by_artist(artist_name)
 		self.all.detect{|art| art.artist.name = artist_name}
 	end
+
 
 end

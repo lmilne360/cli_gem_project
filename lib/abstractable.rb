@@ -1,8 +1,6 @@
 module Abstractable
 	module ClassMethods
-		def all
-			@@all
-		end
+		
 
 		def empty
 			self.all.clear
@@ -11,7 +9,7 @@ module Abstractable
 	
 	module InstanceMethods
 		def save
-			self.all << self
+			self.class.all << self
 		end
 	end
 	
