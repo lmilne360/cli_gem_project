@@ -6,18 +6,22 @@ data.each do |art_data|
 	artist = Artist.new(art_data)
 	art = Art.new(art_data)
 	art.artist = artist	
-	binding.pry
+	#binding.pry
 end
 
 def self.start
 	puts "Welcome! What Would you like to do?"
+	answer = gets.strip.downcase
 
+	case answer
+	when "list art"
+		list_art
+	end
 end
 
 
-def list_art
-	Art.all.each.with_index(1) {|art, i| puts "#{i}. #{art.name} by #{art.artist.name}"}
-	
+def self.list_art
+	Art.all.each.with_index(1) {|art, i| puts "#{i}. #{art.title} by #{art.artist.name}"}
 end
 
 
