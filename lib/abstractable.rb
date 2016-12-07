@@ -4,14 +4,14 @@ module Abstractable
 			@@all
 		end
 
-		def find_by_name(name)
-			self.all.detect{|obj| obj.name == name}
+		def empty
+			self.all.clear
 		end
 	end
 	
 	module InstanceMethods
 		def save
-			self.all << save
+			self.all << self
 		end
 	end
 	

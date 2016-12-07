@@ -1,5 +1,8 @@
 class Art
-attr_accessor :title, :artist, :link
+	extend Abstractable::ClassMethods
+	include Abstractable::InstanceMethods
+	attr_accessor :title, :artist, :link
+	
 	@@all = []
 
 	def initialize(arr)

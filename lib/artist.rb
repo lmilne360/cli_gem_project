@@ -1,5 +1,8 @@
 class Artist
- attr_accessor :name, :page
+	extend Abstractable::ClassMethods
+	include Abstractable::InstanceMethods
+ 	attr_accessor :name, :page
+ 	
  @@all = []
 
  def initialize(arr)
