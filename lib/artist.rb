@@ -12,7 +12,7 @@ class Artist
  end
 
  def find(name)
- 	self.all.find { |artist| artist.name == name  }
+ 	self.all.detect{ |artist| artist.name == name  }
  end
 
 
