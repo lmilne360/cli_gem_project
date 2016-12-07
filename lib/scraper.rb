@@ -12,8 +12,9 @@ class Scraper
 			title = item.css(".title").text
 			artist = item.css(".artist").text
 			link = item["href"]
+			artist_page = item.css(".artist a").attribute("href").value
 
-			art_pieces << {title: title, artist_name: artist, link: link}
+			art_pieces << {title: title, link:link, artist_name: artist, artist_page: artist_page}
 		end
 
 		art_pieces
