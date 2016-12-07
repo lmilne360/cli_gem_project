@@ -8,3 +8,10 @@ class Scraper
 		
 	end
 end
+=begin
+
+link = index.css(".thumb").attribute("href").value
+title = index.css(".thumb .title").text
+artist = index.css(".thumb .artist").text
+
+=end

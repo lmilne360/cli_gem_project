@@ -1,3 +1,3 @@
-class C
+class Cli
 
 end
