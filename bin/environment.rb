@@ -1,6 +1,7 @@
 require 'bundler'
 
 Bundler.require
+
 require 'require_all'
 require 'pry'
 require 'nokogiri'
