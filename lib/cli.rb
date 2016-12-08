@@ -74,7 +74,7 @@ end
 
 def self.find_art
 	puts "What is the title of the piece, or it's artist?"
-	answer = gets.strip
+	answer = gets.strip.downcase
 	art = Art.find_by_title(answer)
 	art ||= Art.find_by_artist(answer)
 	if art
@@ -90,7 +90,7 @@ end
 
 def self.find_artist
 		puts "What is the name of the artist?"
-		name = gets.strip
+		name = gets.strip.downcase
 		artist = Artist.find(name)
 	if artist
 		puts "#{artist.name.capitalize} has a total of :\n #{artist.art_pieces}(Art Pieces)\n #{artist.comments}\n #{artist.pageviews}\n On their page."
