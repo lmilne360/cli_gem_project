@@ -1,3 +1,3 @@
-require_relative 'environment'
+require_relative '../config/environment'
 
 Cli.start
