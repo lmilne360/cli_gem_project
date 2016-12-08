@@ -9,7 +9,11 @@ class Artist
  	@name = art_data[:artist_name]
  	@page = art_data[:artist_page]
  	scrape_profile(@page)
- 	self.save
+ 	save
+ end
+
+ def save
+ 	self.class.all << self
  end
 
  def self.all
@@ -22,15 +26,14 @@ class Artist
 
  def scrape_profile(page)
  	doc = Nokogiri::HTML(open(page))
- 	details = doc.css("span.tight").text.split("\n").map do |i| #details is an array containing [1] amount art pieces [2]  total comments [3] total pageviews 
- 		i.strip
- 	end.delete_if(&:empty?)
+ 	details = doc.css("span.tight").text.split("\n").map {|i| i.strip}.delete_if(&:empty?)
+ 	details.each do |attr|
+ 		self.art_pieces = attr if attr =~ /deviation/i
+ 		self.comments = attr if attr =~ /comments/i
+ 		self.pageviews = attr if attr =~ /pageviews/i
+ 	end
 
- 	self.art_pieces = details[1]
- 	self.comments = details[2]
- 	self.pageviews = details[3]
  end
-
 
 end
 
