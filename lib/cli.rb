@@ -75,11 +75,10 @@ end
 def self.find_art
 	puts "What is the title of the piece, or it's artist?"
 	answer = gets.strip
-	if Art.find_by_title(answer)
-		art = Art.find_by_title(answer)
+	art = Art.find_by_title(answer)
+	if art
 		puts " Title: #{art.title} Artist: #{art.artist.name} Link: #{art.link}"
-	elsif Art.find_by_artist(answer)
-		art =  Art.find_by_artist(answer)
+	elsif art = Art.find_by_artist(answer)
 		puts "Title: #{art.title} Artist: #{art.artist.name} Link: #{art.link}"
 	else 
 		puts "Cannot find an art piece with that title or artist"
@@ -90,7 +89,7 @@ end
 def self.find_artist
 		puts "What is the name of the artist?"
 		name = gets.strip
-	artist = Artist.find(name)
+		artist = Artist.find(name)
 	if artist
 		puts "#{artist.name.capitalize} has a total of :\n #{artist.art_pieces}(Art Pieces)\n #{artist.comments}\n #{artist.pageviews}\n On their page."
 		puts "#{artist.name.capitalize}'s Website is #{artist.page}"
