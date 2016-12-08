@@ -12,3 +12,5 @@ gem 'rspec', '>= 3.0'
 gem 'pry'
 
 gem 'require_all', '~> 1.3', '>= 1.3.3'
+
+gem 'launchy', '~> 2.4', '>= 2.4.3'
