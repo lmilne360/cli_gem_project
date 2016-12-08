@@ -15,11 +15,11 @@ class Art
 		@@all
 	end
 
-	def find_by_title(title)
+	def self.find_by_title(title)
 		self.all.detect{|art| art.title = title}
 	end
 
-	def find_by_artist(artist_name)
+	def self.find_by_artist(artist_name)
 		self.all.detect{|art| art.artist.name = artist_name}
 	end
 
