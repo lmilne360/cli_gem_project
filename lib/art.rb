@@ -1,6 +1,4 @@
 class Art
-	extend Abstractable::ClassMethods
-	include Abstractable::InstanceMethods
 	attr_accessor :title, :artist, :link
 
 	@@all = []
@@ -8,8 +6,12 @@ class Art
 	def initialize(art_data)
 		@title = art_data[:title]
 		@link = art_data[:link]
-		self.save
+		save
 	end
+
+	def save
+ 	self.class.all << self
+ 	end
 
 	def self.all
 		@@all

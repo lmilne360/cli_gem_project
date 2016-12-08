@@ -1,6 +1,4 @@
 class Artist
-	extend Abstractable::ClassMethods
-	include Abstractable::InstanceMethods
  	attr_accessor :name, :page, :art_pieces, :comments, :pageviews
 
  @@all = []
