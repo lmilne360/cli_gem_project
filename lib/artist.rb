@@ -1,7 +1,7 @@
 class Artist
 	extend Abstractable::ClassMethods
 	include Abstractable::InstanceMethods
- 	attr_accessor :name, :page, :art_pieces :comments, :pageviews
+ 	attr_accessor :name, :page, :art_pieces, :comments, :pageviews
 
  @@all = []
 
@@ -21,7 +21,7 @@ class Artist
  end
 
  def scrape_profile(page)
- 	doc = Nokogiri:HTML(open(page))
+ 	doc = Nokogiri::HTML(open(page))
  	details = doc.css("span.tight").text.split("\n").map do |i| #details is an array containing [1] amount art pieces [2]  total comments [3] total pageviews 
  		i.strip
  	end.delete_if(&:empty?)
