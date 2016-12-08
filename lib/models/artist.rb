@@ -19,7 +19,11 @@ class Artist
  end
 
  def self.find(name)
- 	self.all.detect{ |artist| artist.name.downcase == name.downcase  }
+ 	self.all.detect{ |artist| artist.name.downcase == name }
+ end
+
+ def open_page
+ 	Launchy.open(@page)
  end
 
  def scrape_profile(page)
@@ -34,4 +38,3 @@ class Artist
  end
 
 end
-
