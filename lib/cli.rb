@@ -15,6 +15,7 @@ class Cli
 		else
 		puts "that's not an option, viewing default page"		
 		end
+		puts "Loading art pieces, patience is a virtue ..."
 		scrape(@site)
 		take_action
 		repeat
@@ -31,11 +32,11 @@ class Cli
 
 	def self.take_action
 		puts "Where do we go from here?"
-		puts "List art pieces | List Artists | Find Art | Find Artist | End"
+		puts "List Art Pieces | List Artists | Find Art | Find Artist | End"
 		answer = gets.strip.downcase
 
 		case answer
-		when 'list art'
+		when 'list art pieces'
 			list_art
 		when 'list artists'
 			list_artists
@@ -91,8 +92,7 @@ def self.find_artist
 		name = gets.strip
 	artist = Artist.find(name)
 	if artist
-		binding.pry
-		puts "#{artist.name.capitalize} has a total of #{artist.art_pieces}\n #{artist.comments}\n #{artist.pageviews} on his page"
+		puts "#{artist.name.capitalize} has a total of :\n #{artist.art_pieces}(Art Pieces)\n #{artist.comments}\n #{artist.pageviews}\n On their page."
 		puts "#{artist.name.capitalize}'s Website is #{artist.page}"
 	else
 		puts "Cannot find that artist"	
