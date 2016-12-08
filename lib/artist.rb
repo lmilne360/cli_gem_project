@@ -22,6 +22,10 @@ class Artist
  	self.all.detect{ |artist| artist.name.downcase == name.downcase  }
  end
 
+ def open_page
+ 	Launchy.open(@page)
+ end
+
  def scrape_profile(page)
  	doc = Nokogiri::HTML(open(page))
  	details = doc.css("span.tight").text.split("\n").map {|i| i.strip}.delete_if(&:empty?)
@@ -34,4 +38,3 @@ class Artist
  end
 
 end
-

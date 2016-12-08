@@ -94,6 +94,9 @@ def self.find_artist
 	if artist
 		puts "#{artist.name.capitalize} has a total of :\n #{artist.art_pieces}(Art Pieces)\n #{artist.comments}\n #{artist.pageviews}\n On their page."
 		puts "#{artist.name.capitalize}'s Website is #{artist.page}"
+		puts "Would you like to visit this artist's page?"
+		answer = gets.strip.downcase
+		artist.open_page if answer == 'yes'
 	else
 		puts "Cannot find that artist"	
 	end
