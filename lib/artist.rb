@@ -8,6 +8,7 @@ class Artist
  def initialize(art_data)
  	@name = art_data[:artist_name]
  	@page = art_data[:artist_page]
+ 	scrape_profile(@page)
  	self.save
  end
 
@@ -16,11 +17,11 @@ class Artist
  end
 
  def find(name)
- 	self.all.detect{ |artist| artist.name == name  }
+ 	self.all.detect{ |artist| artist.name.downcase == name.downcase  }
  end
 
- def scrape_profile(@page)
- 	doc = Nokogiri:HTML(open(@page))
+ def scrape_profile(page)
+ 	doc = Nokogiri:HTML(open(page))
  	details = doc.css("span.tight").text.split("\n").map do |i| #details is an array containing [1] amount art pieces [2]  total comments [3] total pageviews 
  		i.strip
  	end.delete_if(&:empty?)

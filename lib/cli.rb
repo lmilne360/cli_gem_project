@@ -68,6 +68,12 @@ def self.find_art
 		
 end
 
+def self.find_artist
+		puts "What is the name of the artist?"
+		name = gets.strip
+	Artist.find(name)
+end
+
 
 
 end
