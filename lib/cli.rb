@@ -3,10 +3,9 @@ class Cli
 @@site = 'http://www.deviantart.com/browse/all' #default site
 
 	def self.start
-		puts " Welcome to the art browser! Would you like to view the newest, popular, or undiscovered art pieces?"
+		puts "Welcome to the art browser! Would you like to view the newest, popular or undiscovered art pieces?"
 		choice = gets.strip.downcase
 		
-
 		if choice == 'newest'
 			@@site == 'http://www.deviantart.com/browse/all/digitalart/?order=5'
 		elsif choice == 'popular'
@@ -18,12 +17,17 @@ class Cli
 		end
 		scrape(@@site)
 		take_action
+		puts "Is that all?(Yes|No)" 
+		answer = gets.strip.downcase
+		unless answer == "yes"
+			take_action
+		end
 
 	end	
 
 	def self.take_action
 		puts "Where do we go from here?"
-		puts "List art pieces | List Artists | Find Art"
+		puts "List art pieces | List Artists | Find Art | Find Artist"
 		answer = gets.strip.downcase
 
 		case answer
@@ -81,7 +85,8 @@ def self.find_artist
 		name = gets.strip
 	artist = Artist.find(name)
 	if artist
-		puts	"#{artist.name.capitalize} has a total of #{artist.art_pieces}, #{artist.comments} and #{artist.pageviews} on his page"
+		puts "#{artist.name.capitalize} has a total of #{artist.art_pieces}, #{artist.comments} and #{artist.pageviews} on his page"
+		puts "#{artist.name.capitalize}'s Website is #{artist.page}"
 	else
 		puts
 		"Cannot find that artist"

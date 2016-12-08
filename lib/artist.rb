@@ -16,7 +16,7 @@ class Artist
 	@@all
  end
 
- def find(name)
+ def self.find(name)
  	self.all.detect{ |artist| artist.name.downcase == name.downcase  }
  end
 
