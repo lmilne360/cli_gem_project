@@ -76,10 +76,12 @@ def self.find_art
 	puts "What is the title of the piece, or it's artist?"
 	answer = gets.strip
 	art = Art.find_by_title(answer)
+	art ||= Art.find_by_artist(answer)
 	if art
 		puts " Title: #{art.title} Artist: #{art.artist.name} Link: #{art.link}"
-	elsif art = Art.find_by_artist(answer)
-		puts "Title: #{art.title} Artist: #{art.artist.name} Link: #{art.link}"
+		puts "Would you like to visit the link for this piece?"
+		ans = gets.strip.downcase
+		art.open_link if ans == 'yes'
 	else 
 		puts "Cannot find an art piece with that title or artist"
 	end

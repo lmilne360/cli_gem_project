@@ -25,5 +25,9 @@ class Art
 		self.all.detect{|art| art.artist.name == artist_name}
 	end
 
+	def open_link
+		Launchy.open(@link)
+	end
+
 
 end
