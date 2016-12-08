@@ -1,33 +1,37 @@
 class Cli
 
-@@site = 'http://www.deviantart.com/browse/all' #default site
+@site = 'http://www.deviantart.com/browse/all' #default site
 
 	def self.start
 		puts "Welcome to the art browser! Would you like to view the newest, popular or undiscovered art pieces?"
 		choice = gets.strip.downcase
 		
 		if choice == 'newest'
-			@@site == 'http://www.deviantart.com/browse/all/digitalart/?order=5'
+			@site == 'http://www.deviantart.com/browse/all/digitalart/?order=5'
 		elsif choice == 'popular'
-			@@site = 'http://www.deviantart.com/browse/all/digitalart/?order=11'
+			@site = 'http://www.deviantart.com/browse/all/digitalart/?order=11'
 		elsif choice == 'undiscovered'
-			@@site == 'http://www.deviantart.com/browse/all/digitalart/?order=134217728'
+			@site == 'http://www.deviantart.com/browse/all/digitalart/?order=134217728'
 		else
 		puts "that's not an option, viewing default page"		
 		end
-		scrape(@@site)
+		scrape(@site)
 		take_action
+		repeat
+		
+	end	
+
+	def self.repeat
 		puts "Is that all?(Yes|No)" 
 		answer = gets.strip.downcase
-		unless answer == "yes"
+		while answer != "yes"
 			take_action
 		end
-
-	end	
+	end
 
 	def self.take_action
 		puts "Where do we go from here?"
-		puts "List art pieces | List Artists | Find Art | Find Artist"
+		puts "List art pieces | List Artists | Find Art | Find Artist | End"
 		answer = gets.strip.downcase
 
 		case answer
@@ -39,6 +43,8 @@ class Cli
 			find_art
 		when 'find artist'
 			find_artist
+		when 'end'
+			exit!
 		else
 			puts "That's not a valid choice"
 		end
@@ -85,11 +91,11 @@ def self.find_artist
 		name = gets.strip
 	artist = Artist.find(name)
 	if artist
-		puts "#{artist.name.capitalize} has a total of #{artist.art_pieces}, #{artist.comments} and #{artist.pageviews} on his page"
+		binding.pry
+		puts "#{artist.name.capitalize} has a total of #{artist.art_pieces}\n #{artist.comments}\n #{artist.pageviews} on his page"
 		puts "#{artist.name.capitalize}'s Website is #{artist.page}"
 	else
-		puts
-		"Cannot find that artist"
+		puts "Cannot find that artist"	
 	end
 end
 
