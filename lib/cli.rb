@@ -68,4 +68,6 @@ def self.find_art
 		
 end
 
+
+
 end
