@@ -3,9 +3,9 @@ class Artist
 
  @@all = []
 
- def initialize(art_data)
- 	@name = art_data[:artist_name]
- 	@page = art_data[:artist_page]
+ def initialize(name:, page:)
+ 	@name = name
+ 	@page = page
  	scrape_profile(@page)
  	save
  end

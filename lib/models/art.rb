@@ -3,9 +3,9 @@ class Art
 
 	@@all = []
 
-	def initialize(art_data)
-		@title = art_data[:title]
-		@link = art_data[:link]
+	def initialize(title:, link:)
+		@title = title
+		@link = link
 		save
 	end
 
